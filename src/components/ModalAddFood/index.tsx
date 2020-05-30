@@ -1,31 +1,31 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react'
 
-import { FiCheckSquare } from 'react-icons/fi';
-import { FormHandles } from '@unform/core';
-import { Form } from './styles';
-import Modal from '../Modal';
-import Input from '../Input';
+import { FiCheckSquare } from 'react-icons/fi'
+import { FormHandles } from '@unform/core'
+import { Form } from './styles'
+import Modal from '../Modal'
+import Input from '../Input'
 
 interface IFoodPlate {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  description: string;
-  available: boolean;
+  id: number
+  name: string
+  image: string
+  price: string
+  description: string
+  available: boolean
 }
 
 interface ICreateFoodData {
-  name: string;
-  image: string;
-  price: string;
-  description: string;
+  name: string
+  image: string
+  price: string
+  description: string
 }
 
 interface IModalProps {
-  isOpen: boolean;
-  setIsOpen: () => void;
-  handleAddFood: (food: Omit<IFoodPlate, 'id' | 'available'>) => void;
+  isOpen: boolean
+  setIsOpen: () => void
+  handleAddFood: (food: Omit<IFoodPlate, 'id' | 'available'>) => void
 }
 
 const ModalAddFood: React.FC<IModalProps> = ({
@@ -33,24 +33,24 @@ const ModalAddFood: React.FC<IModalProps> = ({
   setIsOpen,
   handleAddFood,
 }) => {
-  const formRef = useRef<FormHandles>(null);
+  const formRef = useRef<FormHandles>(null)
 
   const handleSubmit = useCallback(
     async (data: ICreateFoodData) => {
-      // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+      // DONE ADD A NEW FOOD AND CLOSE THE MODAL
+      handleAddFood(data)
+      setIsOpen()
     },
     [handleAddFood, setIsOpen],
-  );
+  )
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Novo Prato</h1>
         <Input name="image" placeholder="Cole o link aqui" />
-
         <Input name="name" placeholder="Ex: Moda Italiana" />
         <Input name="price" placeholder="Ex: 19.90" />
-
         <Input name="description" placeholder="Descrição" />
         <button type="submit" data-testid="add-food-button">
           <p className="text">Adicionar Prato</p>
@@ -60,7 +60,7 @@ const ModalAddFood: React.FC<IModalProps> = ({
         </button>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
-export default ModalAddFood;
+export default ModalAddFood

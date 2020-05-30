@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState, useEffect } from 'react'
 
-import ReactModal from 'react-modal';
+import ReactModal from 'react-modal'
 
 interface IFoodPlate {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  description: string;
-  available: boolean;
+  id: number
+  name: string
+  image: string
+  price: string
+  description: string
+  available: boolean
 }
 
 interface IModalProps {
-  children: any;
-  isOpen: boolean;
-  setIsOpen: () => void;
+  children: any
+  isOpen: boolean
+  setIsOpen: () => void
 }
 
 const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
-  const [modalStatus, setModalStatus] = useState(isOpen);
+  const [modalStatus, setModalStatus] = useState(isOpen)
 
   useEffect(() => {
-    setModalStatus(isOpen);
-  }, [isOpen]);
+    setModalStatus(isOpen)
+  }, [isOpen])
 
   return (
     <ReactModal
@@ -51,7 +52,7 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
     >
       {children}
     </ReactModal>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

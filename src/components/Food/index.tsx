@@ -1,37 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { FiEdit3, FiTrash } from 'react-icons/fi';
+import { FiEdit3, FiTrash } from 'react-icons/fi'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 interface IFoodPlate {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  description: string;
-  available: boolean;
+  id: number
+  name: string
+  image: string
+  price: string
+  description: string
+  available: boolean
 }
 
 interface IProps {
-  food: IFoodPlate;
-  handleDelete: (id: number) => {};
-  handleEditFood: (food: IFoodPlate) => void;
+  food: IFoodPlate
+  openModal: () => void
+  handleDelete: (id: number) => {}
+  handleEditFood: (food: IFoodPlate) => void
 }
 
 const Food: React.FC<IProps> = ({
   food,
+  openModal,
   handleDelete,
   handleEditFood,
 }: IProps) => {
-  const [isAvailable, setIsAvailable] = useState(food.available);
+  const [isAvailable, setIsAvailable] = useState(food.available)
 
   async function toggleAvailable(): Promise<void> {
-    // TODO UPDATE STATUS (available)
+    // DONE UPDATE STATUS (available)
+    if (!isAvailable) {
+      setIsAvailable(true)
+    } else {
+      setIsAvailable(false)
+    }
   }
 
   function setEditingFood(): void {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+    // DONE - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+    handleEditFood(food)
+    openModal()
   }
 
   return (
@@ -56,7 +65,6 @@ const Food: React.FC<IProps> = ({
           >
             <FiEdit3 size={20} />
           </button>
-
           <button
             type="button"
             className="icon"
@@ -66,10 +74,8 @@ const Food: React.FC<IProps> = ({
             <FiTrash size={20} />
           </button>
         </div>
-
         <div className="availability-container">
           <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
-
           <label htmlFor={`available-switch-${food.id}`} className="switch">
             <input
               id={`available-switch-${food.id}`}
@@ -83,7 +89,7 @@ const Food: React.FC<IProps> = ({
         </div>
       </section>
     </Container>
-  );
-};
+  )
+}
 
-export default Food;
+export default Food

@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 interface IContainerProps {
-  isFocused: boolean;
-  isFilled: boolean;
+  isFocused: boolean
+  isFilled: boolean
 }
 
 export const Container = styled.div<IContainerProps>`
@@ -53,4 +53,4 @@ export const Container = styled.div<IContainerProps>`
   svg {
     margin-right: 16px;
   }
-`;
+`

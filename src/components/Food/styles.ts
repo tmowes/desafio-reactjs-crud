@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 interface IFoodPlateProps {
-  available: boolean;
+  available: boolean
 }
 
 export const Container = styled.div<IFoodPlateProps>`
@@ -146,4 +146,4 @@ export const Container = styled.div<IFoodPlateProps>`
       }
     }
   }
-`;
+`
